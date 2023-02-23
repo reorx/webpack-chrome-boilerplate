@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Webpack Chrome Boilerplate",
+  "description": "A boilerplate for building Chrome extensions with Webpack",
+  "version": "1.0",
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "options_ui": {
+    "page": "options.html"
+  },
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "permissions": [
+    "storage",
+    "tabs",
+    "scripting",
+    "activeTab"
+  ]
+}
