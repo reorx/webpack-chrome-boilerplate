@@ -17,6 +17,12 @@
   "background": {
     "service_worker": "js/background.js"
   },
+  "content_scripts": [
+    {
+      "matches": ["https://developer.chrome.com/docs/*"],
+      "js": ["js/content_script.js"]
+    }
+  ],
   "permissions": [
     "storage",
     "tabs",

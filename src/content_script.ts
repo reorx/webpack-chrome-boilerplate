@@ -1,3 +1,5 @@
+import './content_style.scss';
+
 import { colors, getLogger } from './utils/log';
 
 
