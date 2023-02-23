@@ -1,8 +1,7 @@
-import browser from 'webextension-polyfill';
 
 
-export const getCurrentTab = async (): Promise<browser.Tabs.Tab | null> => {
-  const tabs = await browser.tabs.query({
+export const getCurrentTab = async (): Promise<chrome.tabs.Tab | null> => {
+  const tabs = await chrome.tabs.query({
     active: true,
     currentWindow: true,
   })
@@ -27,7 +26,7 @@ export const markInjected = (name: string): void => {
 
 // https://developer.chrome.com/docs/extensions/mv3/content_scripts/#programmatic
 export const injectScript = async (file: string, tabId: number): Promise<void> => {
-  const results = await browser.scripting.executeScript({
+  const results = await chrome.scripting.executeScript({
     target: { tabId },
     func: isInjected,
     args: [file],
@@ -36,22 +35,22 @@ export const injectScript = async (file: string, tabId: number): Promise<void> =
     console.debug(`${file} already injected, skip`)
     return
   }
-  await browser.scripting.executeScript({
+  await chrome.scripting.executeScript({
     target: { tabId },
     files: [file],
   })
 }
 
-export const openOrCreatePage = async (page: string, nextToCurrent: boolean = true): Promise<browser.Tabs.Tab> => {
-  const url = browser.runtime.getURL(page)
-  const tabs = await browser.tabs.query({
+export const openOrCreatePage = async (page: string, nextToCurrent: boolean = true): Promise<chrome.tabs.Tab> => {
+  const url = chrome.runtime.getURL(page)
+  const tabs = await chrome.tabs.query({
     url,
   })
   if (tabs.length > 0) {
     // switch to the tab
-    return browser.tabs.update(tabs[0].id, {
+    return chrome.tabs.update(tabs[0].id!, {
       active: true,
-    })
+    })!
   }
   let index
   if (nextToCurrent) {
@@ -60,7 +59,7 @@ export const openOrCreatePage = async (page: string, nextToCurrent: boolean = tr
       index = currentTab.index + 1
     }
   }
-  return browser.tabs.create({
+  return chrome.tabs.create({
     url,
     ...(index !== undefined ? { index } : {}),
   })

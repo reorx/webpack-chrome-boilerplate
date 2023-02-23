@@ -17,8 +17,7 @@
     "chalk": "^5.0.1",
     "delegate-it": "^3.0.0",
     "loglevel": "^1.8.0",
-    "loglevel-plugin-prefix": "^0.8.4",
-    "webextension-polyfill": "^0.8.0"
+    "loglevel-plugin-prefix": "^0.8.4"
   },
   "devDependencies": {
     "@babel/core": "^7.17.12",
@@ -26,7 +25,6 @@
     "@babel/preset-typescript": "^7.17.12",
     "@reorx/webpack-ext-reloader": "^1.1.11",
     "@types/chrome": "0.0.180",
-    "@types/webextension-polyfill": "^0.8.2",
     "@typescript-eslint/eslint-plugin": "^5.24.0",
     "@typescript-eslint/parser": "^5.24.0",
     "babel-loader": "^8.2.5",
