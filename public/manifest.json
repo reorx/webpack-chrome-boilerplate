@@ -24,6 +24,12 @@
       "js": ["js/content_script.js"]
     }
   ],
+  "web_accessible_resources": [
+    {
+      "resources": ["/js/inject.js"],
+      "matches": ["https://developer.chrome.com/docs/*"]
+    }
+  ],
   "permissions": [
     "storage",
     "tabs",

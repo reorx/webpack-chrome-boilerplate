@@ -13,11 +13,13 @@ console.log('srcDir', srcDir)
 
 const common = {
   entry: {
+    // background keeps the extension auto reloading, please don't remove it
+    background: path.join(srcDir, 'background.ts'),
     popup: path.join(srcDir, 'popup.ts'),
     options: path.join(srcDir, 'options.ts'),
-    background: path.join(srcDir, 'background.ts'),
     content_script: path.join(srcDir, 'content_script.ts'),
     content_style: path.join(srcDir, 'content_style.scss'),
+    inject: path.join(srcDir, 'inject.ts'),
     custom_page: path.join(srcDir, 'custom_page.ts'),
   },
   output: {

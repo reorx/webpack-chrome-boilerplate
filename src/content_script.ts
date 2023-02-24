@@ -16,3 +16,13 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     sendResponse("Color message is none.");
   }
 });
+
+function injectScript(file: string) {
+  const body = document.getElementsByTagName('body')[0];
+  const s = document.createElement('script');
+  s.setAttribute('type', 'text/javascript');
+  s.setAttribute('src', file);
+  body.appendChild(s);
+}
+
+injectScript(chrome.runtime.getURL('/js/inject.js'))
