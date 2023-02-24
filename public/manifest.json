@@ -20,6 +20,7 @@
   "content_scripts": [
     {
       "matches": ["https://developer.chrome.com/docs/*"],
+      "css": ["css/content_style.css"],
       "js": ["js/content_script.js"]
     }
   ],

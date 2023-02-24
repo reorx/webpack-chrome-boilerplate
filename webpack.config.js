@@ -17,11 +17,12 @@ const common = {
     options: path.join(srcDir, 'options.ts'),
     background: path.join(srcDir, 'background.ts'),
     content_script: path.join(srcDir, 'content_script.ts'),
+    content_style: path.join(srcDir, 'content_style.scss'),
     custom_page: path.join(srcDir, 'custom_page.ts'),
   },
   output: {
-    path: path.join(destDir, 'js'),
-    filename: '[name].js',
+    path: destDir,
+    filename: 'js/[name].js',
   },
   module: {
     rules: [
@@ -44,6 +45,18 @@ const common = {
           'css-loader',
           'sass-loader',
         ],
+      },
+      // For "css" in "content_scripts"
+      // https://stackoverflow.com/a/67307684/596206
+      {
+        test: /content_.+\.scss$/i,
+        use: [
+          'sass-loader',
+        ],
+        type: 'asset/resource',
+        generator: {
+          filename: 'css/[name].css'
+        }
       },
     ],
   },
@@ -69,7 +82,7 @@ function developmentConfig() {
       new ExtReloader({
         entries: {
           background: 'background',
-          contentScript: ['content_script'],
+          contentScript: ['content_script', 'content_style'],
           extensionPage: ['custom_page'],
         },
       }),
