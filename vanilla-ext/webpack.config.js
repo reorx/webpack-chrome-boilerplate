@@ -2,7 +2,6 @@ const webpack = require('webpack')
 const path = require('path')
 const CopyPlugin = require('copy-webpack-plugin')
 const ExtReloader = require('@reorx/webpack-ext-reloader')
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const { merge } = require('webpack-merge')
 
 const rootDir = path.resolve(__dirname)
@@ -68,7 +67,6 @@ const common = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
-    plugins: [new TsconfigPathsPlugin()],
   },
   plugins: [
     new CopyPlugin({
