@@ -14,3 +14,21 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     sendResponse("Color message is none.");
   }
 });
+
+const menuIdCustomPage = "webpack-chrome-boilerplate-custom-page"
+
+chrome.contextMenus.create({
+  id: menuIdCustomPage,
+  title: "Custom Page",
+  contexts: ["action"],
+  // contexts: ["all"],
+});
+
+chrome.contextMenus.onClicked.addListener(function(info, tab) {
+  lg.info('contextMenus.onClicked')
+  if (info.menuItemId == menuIdCustomPage) {
+    chrome.tabs.create({
+      url: chrome.runtime.getURL('/custom_page.html')
+    });
+  }
+})
