@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Webpack Chrome Boilerplate",
-  "description": "A boilerplate for building Chrome extensions with Webpack",
+  "name": "Vanilla Ext Boilerplate",
+  "description": "A boilerplate for building Chrome extensions with Webpack and Vanilla JS",
   "version": "1.0",
   "icons": {
     "16": "icon.png",

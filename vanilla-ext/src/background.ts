@@ -15,7 +15,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
   }
 });
 
-const menuIdCustomPage = "webpack-chrome-boilerplate-custom-page"
+const menuIdCustomPage = "vanilla-ext-boilerplate-custom-page"
 
 chrome.contextMenus.create({
   id: menuIdCustomPage,
