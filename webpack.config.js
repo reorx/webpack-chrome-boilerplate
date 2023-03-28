@@ -41,25 +41,29 @@ const common = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.scss$/i,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader',
-        ],
-      },
-      // For "css" in "content_scripts"
-      // https://stackoverflow.com/a/67307684/596206
-      {
-        test: /content_.+\.scss$/i,
-        use: [
-          'sass-loader',
-        ],
-        type: 'asset/resource',
-        generator: {
-          filename: 'css/[name].css'
-        }
-      },
+        oneOf: [
+          // For "css" in "content_scripts", generate separate files
+          // https://stackoverflow.com/a/67307684/596206
+          {
+            test: /content_.+\.scss$/i,
+            use: [
+              'sass-loader',
+            ],
+            type: 'asset/resource',
+            generator: {
+              filename: 'css/[name].css'
+            }
+          },
+          {
+            test: /\.scss$/i,
+            use: [
+              'style-loader',
+              'css-loader',
+              'sass-loader',
+            ],
+          },
+        ]
+      }
     ],
   },
   resolve: {
