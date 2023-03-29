@@ -10,7 +10,7 @@
       "ignoreComments": false
   },
   "groupRules": [
-      "^react(-dom)?$",
+      "^react(-dom)?",
       {},
       "^@/(.*)$",
       "^[./]"
