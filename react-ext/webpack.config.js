@@ -29,6 +29,7 @@ const common = {
     filename: 'js/[name].js',
   },
   optimization: {
+    // https://webpack.js.org/plugins/split-chunks-plugin/
     splitChunks: {
         name: "vendor",
         chunks(chunk) {
@@ -84,6 +85,9 @@ const common = {
     new CopyPlugin({
       patterns: [{ from: path.join(rootDir, 'public'), to: destDir }],
     }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    }),
   ],
 }
 
@@ -102,9 +106,6 @@ function developmentConfig() {
           extensionPage: ['custom_page'],
         },
       }),
-      new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-      }),
     ],
   })
 
@@ -121,11 +122,6 @@ function productionConfig() {
   console.log('production config')
   const config = merge(common, {
     mode: 'production',
-    plugins: [
-      new webpack.DefinePlugin({
-        'process.env.APP_ENV': JSON.stringify(process.env.APP_ENV),
-      }),
-    ],
   })
   return config
 }
