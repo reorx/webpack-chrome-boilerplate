@@ -47,5 +47,27 @@
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.9.0",
     "webpack-merge": "^5.0.0"
+  },
+  "importSorter": {
+    "autoFormat": "onSave",
+    "maxLineLength": 100,
+    "emptyLinesAfterAllImports": 2,
+    "wrappingStyle": {
+        "maxBindingNamesPerLine": 5,
+        "maxDefaultAndBindingNamesPerLine": 5,
+        "maxExportNamesPerLine": 5,
+        "maxNamesPerWrappedLine": 7,
+        "ignoreComments": false
+    },
+    "groupRules": [
+        "^react(-dom)?",
+        {},
+        "^@/(.*)$",
+        "^[./]"
+    ],
+    "sortRules": {
+        "paths": [ "_", "aA" ],
+        "names": "none"
+    }
   }
 }
