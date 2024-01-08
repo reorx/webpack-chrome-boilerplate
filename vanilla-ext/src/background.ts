@@ -17,11 +17,13 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
 
 const menuIdCustomPage = "vanilla-ext-boilerplate-custom-page"
 
-chrome.contextMenus.create({
-  id: menuIdCustomPage,
-  title: "Custom Page",
-  contexts: ["action"],
-  // contexts: ["all"],
+chrome.runtime.onInstalled.addListener(function () {
+  chrome.contextMenus.create({
+    id: menuIdCustomPage,
+    title: "Custom Page",
+    contexts: ["action"],
+    // contexts: ["all"],
+  });
 });
 
 chrome.contextMenus.onClicked.addListener(function(info, tab) {
